@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dev.finace$</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <img src="./assets/assets/logo.svg" alt="">
+    </header>
+
+    <main class="container">
+
+        <section id="balance">
+            <h2 class="sr-only">Banlanços</h2> 
+
+            <div class="card">
+                <h3>
+                    Entradas
+                    <img src="./assets/assets/income.svg" alt="Imagem de Entradas">
+                </h3>
+                <p id="incomeDisplay">R$ 00,00</p>
+            </div>
+
+            <div class="card">
+                <h3>
+                    Saídas
+                    <img src="./assets/assets/expense.svg" alt="Imagem de Saídas">
+                </h3>
+                <p id="expenseDisplay">R$ 00,00</p>
+            </div>
+
+            <div class="card total">
+                <h3>
+                    Total
+                    <img src="./assets/assets/total.svg" alt="">
+                </h3>
+                <p id="totalDisplay">R$ 00,00</p>
+            </div>
+        </section>
+
+        <section id="transactions">
+            <h2 class="sr-only">Transações</h2>
+            <div id="Center">
+                <div id="ButtonTransaction">
+                    <a href="#" onclick="Modal1.open()" class="button newIncome">+ Nova Entrada</a>
+                    <div id="Space"></div>
+                    <a href="#" onclick="Modal2.open()" class="button newExpense">- Nova Saída</a>
+                </div>
+            </div>
+
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                        <th>Data</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>  
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <div class="modal-overlay1">
+        <div class="modal">
+            <div id="form">
+                <h2>Nova Entrada</h2>
+                <form action="" onsubmit="Form1.submit1(event)">
+                    
+                    <div class="imput-group1">
+                        <label for="descriptionIncome" class="sr-only">Descrição</label>
+                        <input 
+                            type="text" 
+                            name="description" 
+                            id="descriptionIncome" 
+                            placeholder="Descrição"
+                        />
+                    </div>
+
+                    <div class="input-group1">
+                        <label for="amountIncome" class="sr-only">Valor</label>
+                        <input 
+                            type="number"
+                            step="0.01"
+                            name="amount" 
+                            id="amountIncome" 
+                            placeholder="0,00"
+                        />
+                        <small class="help">
+                            Não é necessário usar o sinal de positivo (+) para as entradas.
+                        </small>
+                    </div>    
+
+                   <div class="input-group1 date">
+                        <label for="dateIncome" class="sr-only">Data</label>
+                        <input 
+                            type="date" 
+                            name="date" 
+                            id="dateIncome" 
+                        />
+                   </div>
+                   
+                   <div class="input-group actions"> 
+                        <a href="#" onclick="Modal1.close()" class="button cancel">Cancelar</a> 
+                        <button>Salvar</button>
+                   </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay2">
+        <div class="modal">
+            <div id="form">
+                <h2>Nova Saída</h2>
+                <form action="" onsubmit="Form2.submit2(event)">
+                    
+                    <div class="imput-group2">
+                        <label for="descriptionExpense" class="sr-only">Descrição</label>
+                        <input 
+                            type="text" 
+                            name="description" 
+                            id="descriptionExpense" 
+                            placeholder="Descrição"
+                        />
+                    </div>
+
+                    <div class="input-group2">
+                        <label for="amountExpense" class="sr-only">Valor</label>
+                        <input 
+                            type="number"
+                            step="0.01"
+                            name="amount" 
+                            id="amountExpense" 
+                            placeholder="0,00"
+                        />
+                        <small class="help">
+                            Não é necessário usar o sinal de negativo (-) para saídas.
+                        </small>
+                    </div>    
+
+                   <div class="input-group2 date">
+                        <label for="dateExpense" class="sr-only">Data</label>
+                        <input 
+                            type="date" 
+                            name="date" 
+                            id="dateExpense" 
+                        />
+                   </div>
+                   
+                   <div class="input-group actions"> 
+                        <a href="#" onclick="Modal2.close()" class="button cancel">Cancelar</a> 
+                        <button>Salvar</button>
+                   </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>dev.finace$</p>
+    </footer>
+
+    <script src="./script.js"></script>
+
+</body>
+
+</html>

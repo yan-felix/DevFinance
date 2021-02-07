@@ -1,0 +1,336 @@
+/*Global========================= */
+:root{
+    --dark-blue: #363f5f;
+    --green: #49aa26;
+    --light-green: #3dd705;
+    --red: #e92929;
+    --light-red: #ff0606;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 93.75%; /* 100% = 16px, logo 93.75% = 15px. */
+}
+
+body{
+    background: #f0f2f5;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.container{
+    width: min(90vw, 800px);
+    margin: auto;
+
+}
+
+.sr-only{  /* "sr-only" = screem reader only (somente leitores de tela)*. Esta class foi adicionada aos h2 para que pudéssimos manipular seus conteúdos utilizando o trick (truque) abaixo, a fim de torná-los invisíveis para o usuário, porém permitido sua leitura através das ferramentas de acessibilidade (screem readers) */ 
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/*Header========================== */
+header{
+    background: #2d4a22;
+    padding: 2rem 0 10rem;
+    text-align: center;
+}
+
+/*Titles=========================== */
+h2{
+    margin-top: 3.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--dark-blue);
+    font-weight: normal;
+}
+
+/*Links & Buttons================= */
+a.newIncome{
+    color: var(--green);
+    text-decoration: none;
+    margin-left: 15%;
+}
+
+a.newExpense{
+    color: var(--red);
+    text-decoration: none;
+    margin-right: 15%;
+}
+
+a.newIncome:hover{
+    color: var(--light-green);
+}
+
+a.newExpense:hover{
+    color: var(--light-red);
+}
+
+.button.newIncome, .button.newExpense{   /* Há uma diferença entre colocar ".button .new{}" e colocar ".button.new{}". Quando colocamos da primeira forma estamos pedindo ao CSS que vá dentro da caixa com a class "button" e procure dentro dela outra caixa com a class "new", enquanto que ao colocarmos da segunda forma estamos pedindo ao CSS que procure (todas) as caixas que possuem as duas class ("button" e "new"). */
+    display: inline-block;
+    margin-bottom: 0.8rem;
+}
+
+#Center{
+    width: min(90vw, 800px);
+}
+
+#ButtonTransaction{
+    display:flex;
+    width: 100%;
+    justify-content: space-between;
+    
+}
+
+.input-group.actions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.input-group.actions .button.cancel{
+    color: var(--red);
+    text-align: center;
+    height: 50px;
+    padding-top: 0.9rem;
+    width: 48%;
+    border: 2px var(--red) solid;
+    border-radius: 0.25rem;
+    opacity: 0.7;
+    text-decoration: none;
+}
+
+.input-group.actions .button.cancel:hover{
+    opacity: 1;
+    color: var(--light-red);
+}
+
+.input-group.actions button{
+    height: 50px;
+    width: 48%;
+    background-color: var(--green);
+    color: white;
+    border: none;
+    padding: 0;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.input-group.actions button:hover{
+    background: var(--light-green);
+}
+
+/*Cards=========================== */
+.card{
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 0.25rem;
+    margin-bottom: 2rem;
+    color: var(--dark-blue);
+}
+
+.card h3{
+    font-weight: normal;
+    font-size: 1rem;
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card p{
+    font-size: 2rem;
+    line-height: 3rem;
+    margin-top: 1rem;
+}
+
+.card.total{
+    background: var(--green);
+    color: white;
+
+}
+
+/*Table============================ */
+#data-table{
+    width: 100%;
+    border-spacing: 0 0.5rem;
+    color: #969cb3;
+    overflow-x: auto;
+    display: block;
+}
+
+table thead tr th:first-child, table tbody tr td:first-child{
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+
+table thead tr th:last-child, table tbody tr td:last-child{
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+
+table tr{
+    opacity: 0.7;
+}
+
+table tbody tr:hover{
+    opacity: 1.25;
+}
+
+table thead th{
+    background: white;
+    color: rgb(7, 0, 8);
+    font-weight: normal;
+    padding: 1rem 2rem;
+    text-align: center;
+    
+}
+
+table tbody td{
+    background: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+td.description{
+    color: rgb(18, 4, 83);
+}
+
+td.expense{
+    color: crimson;
+}
+
+td.income{
+    color: var(--green);
+}
+
+td.date{
+    color: black;
+}
+
+/*Balance========================== */
+#balance{
+    margin-top: -6rem;
+}
+
+#balance h2{
+    color: white;
+    margin-top: 0;
+}
+
+/*Modal============================ */
+.modal-overlay1, .modal-overlay2{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* "rgba" é uma função (obs:estudá-la mais a fundo depois no curso disponível na plataforma da rockteseat) que estaremos usando para colocar um fundo transparente na nossa <div class="modal-overlay active">. */
+    position: fixed; /* Este atributo determina a posição da nossa caixa. Neste caso, ela será fixa, não se moverá na tela. */ 
+    top: 0; /* Este atributo está sendo usado para colocar nossa caixa, que apesar de estar com um width e um height de 100% está seguindo o posicionamento padrão do html e por isso está abaixo da caixa <main></main>, para o topo da página. */
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal-overlay1.active, .modal-overlay2.active{
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal{
+    background-color: rgb(240, 238, 238);
+    padding: 2.4rem;
+    width: 90%;
+    max-width: 500px;
+}
+
+/*Form============================ */
+#form{
+    max-width: 500px;
+}
+
+#form h2{
+    margin-top: 0;
+}
+
+#form form input{
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0.6rem;
+    width: 100%;
+}
+
+.input-group1, .input-group2{
+    margin-top: 2.5rem;
+}
+
+.input-group1.date, .input-group2.date{
+    margin-top: 1.75rem;
+}
+
+.input-group1 small, .input-group2 small{
+    opacity: 0.6;
+}
+
+
+   
+/*Footer========================== */
+footer p{
+    text-align: center;
+    padding: 4rem 0 2rem;
+    color: var(--dark-blue);
+    opacity: 0.6;
+}
+
+
+/*Responsive ==================== */
+@media (min-width:800px){
+    html{
+        font-size: 87.5%;
+    }
+
+    #balance{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;  /* esta propriedade serve para determinar quantas colunas nosso grid terá e qual será a relação de tamanho (largura) entre ela. Ao colocarmos "1fr 1fr 1fr" estamos dizendo que nosso grid terá 3 colunas e que cada uma delas terá uma fração (1fr) de seja lá qual for a largura total que nosso grid possuir, visto que o fr é uma unidade de medida flexível que adapta nosso elemento ao tamanho da tela. */ 
+        gap: 2rem; /* "gap" significa "espaço", ou seja, determina o espaço entre as colunas do nosso grid. */
+    }
+
+    #ButtonTransaction{
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    #data-table{
+        display: inline-table;
+        width: 100%;
+    }
+
+    #balance{
+        margin-top: -3rem;
+    }
+
+    #transactions{
+        margin-top: 10rem;
+    }
+
+    #transactions a{
+        margin-bottom: 1rem;
+    }
+
+    footer{
+        margin-top: 5rem;
+    }
+
+    header img{
+        margin-top: 3rem;
+    }
+}
