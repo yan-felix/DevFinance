@@ -105,7 +105,7 @@ const DOM = { // Este bloco contem os métodos que farão a estruturação html 
                 <td class="${CSSclass}"> ${amount} </td>
                 <td class="${CSSclass}"> ${transaction.date} </td>
                 <td>
-                    <img onclick="balance.remove(${index})" src="./assets/assets/minus.svg" alt="Remover Transação">
+                    <img onclick="balance.remove(${index})" src="./assets/minus.svg" alt="Remover Transação">
                 </td>
             </tr>
         `
